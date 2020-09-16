@@ -42,4 +42,8 @@ class Board
     def win_row?(mark)
         @grid.any? { |row| row.all? { |el| el == mark } }
     end
+
+    def win_col?(mark)
+        @grid.transpose.any? { |col| col.all? { |el| el == mark } }
+    end
 end
