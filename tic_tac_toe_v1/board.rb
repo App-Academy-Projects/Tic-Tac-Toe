@@ -13,4 +13,10 @@ class Board
     def valid?(position)
         return position[0] < ROWS && position[1] < COLS
     end
+
+    def empty?(position)
+        row = position[0]
+        col = position[1]
+        return @grid[row][col] == '_'
+    end
 end
