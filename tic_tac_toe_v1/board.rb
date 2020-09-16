@@ -26,6 +26,7 @@ class Board
         row = position[0]
         col = position[1]
         raise "Not valid Position" if !valid?(position)
+        raise "Not valid mark" if !(mark == :O || mark == :X)
         raise "Already marked! try another place" if !empty?(position)
         @grid[row][col] = mark 
     end
@@ -45,5 +46,11 @@ class Board
 
     def win_col?(mark)
         @grid.transpose.any? { |col| col.all? { |el| el == mark } }
+    end
+
+    def win_diagonal?(mark)
+        dig_1 = (0...ROWS).all? { |i| (@grid[i][i] == mark) }
+        dig_2 = (0...COLS).all? { |i| (@grid[i][COLS-i-1] == mark) }
+        return dig_1 || dig_2
     end
 end
