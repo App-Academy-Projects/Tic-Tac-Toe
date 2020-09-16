@@ -53,4 +53,8 @@ class Board
         dig_2 = (0...COLS).all? { |i| (@grid[i][COLS-i-1] == mark) }
         return dig_1 || dig_2
     end
+
+    def win?(mark)
+        return win_row?(mark) || win_col?(mark) || win_diagonal?(mark)
+    end
 end
