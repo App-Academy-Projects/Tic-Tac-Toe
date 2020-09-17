@@ -140,6 +140,7 @@ Player B, enter two numbers representing a position in the format `row col`: 1 1
   ---  ---  ---  ---
      | _ | _ | _ | _ 
   ---  ---  ---  ---
+Player C, enter two numbers representing a position in the format `row col`:
 
 ```
 
