@@ -1,11 +1,7 @@
 class Board
-    def initialize
-        @SIZE = 3
-        @grid = [
-                  ['_', '_', '_'],
-                  ['_', '_', '_'],
-                  ['_', '_', '_']
-                ]
+    def initialize(n)
+        @SIZE = n
+        @grid = Array.new(@SIZE) { Array.new(@SIZE, '_') }
     end
 
     def valid?(position)
@@ -24,7 +20,6 @@ class Board
         row = position[0]
         col = position[1]
         raise "Not valid Position" if !valid?(position)
-        raise "Not valid mark" if !(mark == :O || mark == :X)
         raise "Already marked! try another place" if !empty?(position)
         @grid[row][col] = mark 
     end
@@ -34,7 +29,7 @@ class Board
             print "     "
             row.each { |el| print "| #{el} " }
             puts
-            puts "   ----------"
+            puts "  ---" * (@SIZE - 1)
         end
     end
 
@@ -58,5 +53,11 @@ class Board
 
     def empty_positions?
         return @grid.any? { |row| row.any?{ |el| el == '_' } }
+    end
+
+    def legal_positions
+        positions = []
+        (0...@SIZE).each { |row| (0...@SIZE).each { |col| positions << [row, col] if self.empty?([row, col]) } }
+        positions
     end
 end
