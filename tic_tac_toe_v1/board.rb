@@ -1,11 +1,7 @@
 class Board
     def initialize
         @SIZE = 3
-        @grid = [
-                  ['_', '_', '_'],
-                  ['_', '_', '_'],
-                  ['_', '_', '_']
-                ]
+        @grid = Array.new(@SIZE) { Array.new(@SIZE, '_') }
     end
 
     def valid?(position)
@@ -24,7 +20,6 @@ class Board
         row = position[0]
         col = position[1]
         raise "Not valid Position" if !valid?(position)
-        raise "Not valid mark" if !(mark == :O || mark == :X)
         raise "Already marked! try another place" if !empty?(position)
         @grid[row][col] = mark 
     end
