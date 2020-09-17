@@ -42,7 +42,7 @@ load 'game.rb' # Load the game.rb file
 game = Game.new(:X, :O) # Create instance from Game class
 game.play # Call the play method to start playing
 ```
-## V1 Demo
+### V1 Demo
 
 ```ruby
 
@@ -107,7 +107,7 @@ load 'game.rb' # Load the game.rb file
 game = Game.new({players_marks}) # Create instance from Game class
 game.play # Call the play method to start playing
 ```
-## V2 Demo
+### V2 Demo
 
 ```ruby
 irb(main):001:0> load 'game.rb'
@@ -157,7 +157,7 @@ load 'game.rb' # Load the game.rb file
 machine_civil_war = Game.new(4, {marks:type}) # False for Human and True for Computer
 machine_civil_war.play # Call the play method to start playing
 ```
-## V3 Demo
+### V3 Demo
 
 ```ruby
 
