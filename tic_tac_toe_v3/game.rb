@@ -1,9 +1,16 @@
 require "./board.rb"
 require "./human_player.rb"
+require "./computer_player.rb"
 class Game
-    def initialize(board_size, *players_marks)
+    def initialize(board_size, players_marks_hash)
         @players = []
-        players_marks.each { |mark| @players << HumanPlayer.new(mark) }
+        players_marks_hash.each do |mark, type|
+            if type == false
+                @players << HumanPlayer.new(mark)
+            else
+                @players << ComputerPlayer.new(mark)
+            end
+        end
         @current_player = @players[0]
         @board = Board.new(board_size)
     end
