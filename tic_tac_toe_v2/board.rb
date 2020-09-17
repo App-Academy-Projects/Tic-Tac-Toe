@@ -1,5 +1,7 @@
 class Board
-    ROWS = COLS = 3
+    ROWS = 3
+    COLS = 3
+    SIZE = ROWS * COLS
     def initialize
         @grid = [
                   ['_', '_', '_'],
