@@ -1,17 +1,13 @@
 class Board
-    ROWS = COLS = 3
-    def initialize
-        @grid = [
-                  ['_', '_', '_'],
-                  ['_', '_', '_'],
-                  ['_', '_', '_']
-                ]
+    def initialize(n)
+        @SIZE = n
+        @grid = Array.new(@SIZE) { Array.new(@SIZE, '_') }
     end
 
     def valid?(position)
         row = position[0]
         col = position[1]
-        return (row < ROWS && col < COLS) && (row >= 0 && col >= 0)
+        return (row < @SIZE && col < @SIZE) && (row >= 0 && col >= 0)
     end
 
     def empty?(position)
@@ -24,7 +20,6 @@ class Board
         row = position[0]
         col = position[1]
         raise "Not valid Position" if !valid?(position)
-        raise "Not valid mark" if !(mark == :O || mark == :X)
         raise "Already marked! try another place" if !empty?(position)
         @grid[row][col] = mark 
     end
@@ -34,7 +29,7 @@ class Board
             print "     "
             row.each { |el| print "| #{el} " }
             puts
-            puts "   ----------"
+            puts "  ---" * @SIZE
         end
     end
 
@@ -47,8 +42,8 @@ class Board
     end
 
     def win_diagonal?(mark)
-        dig_1 = (0...ROWS).all? { |i| (@grid[i][i] == mark) }
-        dig_2 = (0...COLS).all? { |i| (@grid[i][COLS-i-1] == mark) }
+        dig_1 = (0...@SIZE).all? { |i| (@grid[i][i] == mark) }
+        dig_2 = (0...@SIZE).all? { |i| (@grid[i][@SIZE-i-1] == mark) }
         return dig_1 || dig_2
     end
 
