@@ -1,6 +1,7 @@
 require './human_player.rb'
 
 class ComputerPlayer
+    attr_reader :mark
     def initialize(mark_value)
         @mark = mark_value
     end
