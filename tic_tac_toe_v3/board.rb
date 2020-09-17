@@ -29,7 +29,7 @@ class Board
             print "     "
             row.each { |el| print "| #{el} " }
             puts
-            puts "  ---" * @SIZE
+            puts "  ---" * (@SIZE - 1)
         end
     end
 
@@ -57,7 +57,7 @@ class Board
 
     def legal_positions
         positions = []
-        (0...@grid.size).each { |row| (0...row.size).each { |col| positions << [row, col] if @grid[row][col] == '_' } }
+        (0...@SIZE).each { |row| (0...@SIZE).each { |col| positions << [row, col] if self.empty?([row, col]) } }
         positions
     end
 end
