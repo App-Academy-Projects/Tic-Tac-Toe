@@ -7,4 +7,12 @@ class Game
         @current_player = @player_1
         @board = Board.new
     end
+
+    def switch_turn
+        if @current_player == @player_1
+            @current_player = @player_2
+        else
+            @current_player = @player_1
+        end
+    end
 end
